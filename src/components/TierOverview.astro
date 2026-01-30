@@ -1,0 +1,150 @@
+---
+const tiers = [
+  {
+    name: 'Free',
+    price: '$0',
+    description: 'Everything you need to get started',
+    features: [
+      'Unlimited local model usage',
+      'Voice interaction',
+      'Terminal & editor integration',
+      'Community support',
+      'All core features',
+    ],
+    cta: 'Get Started',
+    href: '#quickstart',
+    highlighted: false,
+  },
+  {
+    name: 'Premium',
+    price: '$12/mo',
+    description: 'For power users who want more',
+    features: [
+      'Everything in Free',
+      'Cloud model fallback (GPT-4, Claude)',
+      'Priority model updates',
+      'Advanced workflow automations',
+      'Priority support',
+    ],
+    cta: 'Coming Soon',
+    href: '#',
+    highlighted: true,
+  },
+];
+---
+
+<section class="dark-section">
+  <div class="container">
+    <div class="section-heading reveal">
+      <h2>Simple, honest pricing</h2>
+      <p>Start free. Upgrade when you need cloud superpowers.</p>
+    </div>
+
+    <div class="tier-grid stagger">
+      {tiers.map((tier) => (
+        <div class:list={['tier-card', { highlighted: tier.highlighted }]}>
+          {tier.highlighted && <span class="tier-badge mono">Popular</span>}
+          <h3>{tier.name}</h3>
+          <p class="price">{tier.price}</p>
+          <p class="tier-desc">{tier.description}</p>
+          <ul>
+            {tier.features.map((f) => (
+              <li>{f}</li>
+            ))}
+          </ul>
+          <a href={tier.href} class:list={['btn', tier.highlighted ? 'btn-primary' : 'btn-secondary', 'tier-cta']}>
+            {tier.cta}
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .tier-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: var(--s6);
+    max-width: 48rem;
+    margin-inline: auto;
+  }
+
+  .tier-card {
+    position: relative;
+    padding: var(--s8);
+    border-radius: var(--radius-lg);
+    border: 1px solid #2A2230;
+    background: #16111A;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tier-card.highlighted {
+    border-color: var(--coral);
+    background: linear-gradient(180deg, #1E1522 0%, #16111A 100%);
+  }
+
+  .tier-badge {
+    position: absolute;
+    top: calc(-1 * var(--s3));
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.75rem;
+    padding: var(--s1) var(--s3);
+    background: var(--grad-coral);
+    color: #fff;
+    border-radius: 999px;
+  }
+
+  .price {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: var(--s2) 0 var(--s2);
+  }
+
+  .tier-desc {
+    color: var(--text-muted-on-dark);
+    margin-bottom: var(--s6);
+    font-size: 0.95rem;
+  }
+
+  ul {
+    list-style: none;
+    margin-bottom: var(--s8);
+    flex: 1;
+  }
+
+  li {
+    padding: var(--s2) 0;
+    font-size: 0.95rem;
+    color: var(--text-muted-on-dark);
+    border-bottom: 1px solid #2A2230;
+  }
+
+  li::before {
+    content: '✓ ';
+    color: var(--coral);
+    font-weight: 700;
+  }
+
+  .tier-cta {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .btn-secondary {
+    border-color: #2A2230;
+    color: var(--text-on-dark);
+  }
+
+  @media (max-width: 640px) {
+    .tier-card {
+      padding: var(--s6);
+    }
+
+    .price {
+      font-size: 2rem;
+    }
+  }
+</style>

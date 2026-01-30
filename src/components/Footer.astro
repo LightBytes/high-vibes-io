@@ -1,0 +1,65 @@
+---
+---
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <p class="brand">High Vibes</p>
+      <nav>
+        <a href="https://github.com/high-vibes-io">GitHub</a>
+        <a href="#quickstart">Install</a>
+      </nav>
+      <p class="copy">&copy; {new Date().getFullYear()} High Vibes. Open source under MIT.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  footer {
+    border-top: 1px solid var(--border);
+    padding-block: var(--s8);
+  }
+
+  .footer-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s4);
+  }
+
+  .brand {
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+
+  nav {
+    display: flex;
+    gap: var(--s6);
+  }
+
+  nav a {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    transition: color 0.15s;
+  }
+
+  nav a:hover {
+    color: var(--coral);
+  }
+
+  .copy {
+    width: 100%;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: var(--s4);
+  }
+
+  @media (max-width: 640px) {
+    .footer-inner {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>

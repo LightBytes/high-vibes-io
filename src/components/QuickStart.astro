@@ -1,0 +1,143 @@
+---
+const tabs = [
+  { label: 'macOS', command: 'curl -fsSL https://high-vibes.io/install.sh | bash' },
+  { label: 'Linux', command: 'curl -fsSL https://high-vibes.io/install.sh | bash' },
+  { label: 'Windows', command: 'irm https://high-vibes.io/install.ps1 | iex' },
+];
+---
+
+<section id="quickstart" class="dark-section">
+  <div class="container">
+    <div class="section-heading reveal">
+      <h2>Get started in seconds</h2>
+      <p>One command. That's it.</p>
+    </div>
+
+    <div class="terminal reveal">
+      <div class="terminal-bar">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <div class="tab-group">
+          {tabs.map((tab, i) => (
+            <label class="tab-label">
+              <input type="radio" name="os-tab" value={i} checked={i === 0} />
+              <span>{tab.label}</span>
+            </label>
+          ))}
+        </div>
+      </div>
+      {tabs.map((tab, i) => (
+        <pre class="terminal-body" data-tab={i} data-visible={i === 0 ? 'true' : 'false'}>
+          <code class="mono"><span class="prompt">$</span> {tab.command}</code>
+        </pre>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('input[name="os-tab"]').forEach((radio) => {
+    radio.addEventListener('change', (e) => {
+      const target = e.target as HTMLInputElement;
+      document.querySelectorAll('.terminal-body').forEach((el) => {
+        (el as HTMLElement).dataset.visible = el.dataset.tab === target.value ? 'true' : 'false';
+      });
+    });
+  });
+</script>
+
+<style>
+  .terminal {
+    max-width: 40rem;
+    margin-inline: auto;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: #0D0A0E;
+    border: 1px solid #2A2230;
+  }
+
+  .terminal-bar {
+    display: flex;
+    align-items: center;
+    gap: var(--s2);
+    padding: var(--s3) var(--s4);
+    background: #16111A;
+    border-bottom: 1px solid #2A2230;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #2A2230;
+  }
+  .dot:nth-child(1) { background: #FF6B4A; }
+  .dot:nth-child(2) { background: #FFAA33; }
+  .dot:nth-child(3) { background: #9B72CF; }
+
+  .tab-group {
+    display: flex;
+    gap: var(--s1);
+    margin-left: auto;
+  }
+
+  .tab-label {
+    cursor: pointer;
+  }
+
+  .tab-label input {
+    display: none;
+  }
+
+  .tab-label span {
+    font-size: 0.8rem;
+    padding: var(--s1) var(--s3);
+    border-radius: var(--radius);
+    color: var(--text-muted-on-dark);
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .tab-label input:checked + span {
+    background: #2A2230;
+    color: var(--text-on-dark);
+  }
+
+  .terminal-body {
+    padding: var(--s6);
+    font-size: 0.95rem;
+    overflow-x: auto;
+    color: var(--text-on-dark);
+  }
+
+  .terminal-body[data-visible='false'] {
+    display: none;
+  }
+
+  .prompt {
+    color: var(--coral);
+    margin-right: var(--s2);
+    user-select: none;
+  }
+
+  @media (max-width: 640px) {
+    .terminal-bar {
+      flex-wrap: wrap;
+      gap: var(--s2);
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+    }
+
+    .tab-group {
+      width: 100%;
+      margin-left: 0;
+      justify-content: center;
+    }
+
+    .terminal-body {
+      padding: var(--s4);
+      font-size: 0.8rem;
+    }
+  }
+</style>
