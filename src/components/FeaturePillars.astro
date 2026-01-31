@@ -1,21 +1,27 @@
 ---
 const features = [
   {
+    id: 'privacy',
     icon: '🔒',
     title: 'Local-First Privacy',
     description: 'Your data never leaves your machine. Models run locally — no cloud, no telemetry, no compromises.',
+    link: '/privacy/',
+    linkText: 'Learn more →',
   },
   {
+    id: 'multi-model',
     icon: '🧠',
     title: 'Multi-Model Support',
     description: 'Switch between Ollama, LM Studio, llama.cpp, and more. Use the right model for every task.',
   },
   {
+    id: 'voice',
     icon: '🎙️',
     title: 'Voice Interaction',
     description: 'Talk to your AI naturally. Whisper-powered speech-to-text with real-time streaming responses.',
   },
   {
+    id: 'integrations',
     icon: '🔌',
     title: 'Deep Integrations',
     description: 'Connect to your tools — terminal, editor, browser, calendar. AI that fits your workflow.',
@@ -23,7 +29,7 @@ const features = [
 ];
 ---
 
-<section>
+<section id="features">
   <div class="container">
     <div class="section-heading reveal">
       <h2>Built for people who care about <span class="text-gradient">their data</span></h2>
@@ -32,10 +38,11 @@ const features = [
 
     <div class="grid stagger">
       {features.map((f) => (
-        <div class="card">
+        <div class="card" id={f.id}>
           <span class="card-icon">{f.icon}</span>
           <h3>{f.title}</h3>
           <p>{f.description}</p>
+          {f.link && <a href={f.link} class="card-link">{f.linkText}</a>}
         </div>
       ))}
     </div>
@@ -76,5 +83,18 @@ const features = [
     color: var(--text-muted);
     font-size: 0.95rem;
     line-height: 1.6;
+  }
+
+  .card-link {
+    display: inline-block;
+    margin-top: var(--s4);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--coral);
+    transition: gap 0.2s;
+  }
+
+  .card-link:hover {
+    text-decoration: underline;
   }
 </style>

@@ -1,0 +1,187 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Privacy Architecture — High Vibes" description="How High Vibes keeps your data private: local-first architecture, zero telemetry, and full transparency.">
+  <main>
+    <section class="privacy-hero">
+      <div class="container">
+        <h1>Privacy <span class="text-gradient">Architecture</span></h1>
+        <p class="subtitle">High Vibes is designed so your data never leaves your machine. Here's exactly how it works.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container content">
+        <div class="reveal">
+          <h2>How it works</h2>
+          <p>Every interaction stays on your device. There are no intermediary servers, no proxies, and no "anonymized" data collection.</p>
+
+          <div class="diagram mono">
+            <pre>{`
+┌─────────────────────────────────────────────────────┐
+│                  Your Machine                       │
+│                                                     │
+│  ┌───────────┐    ┌──────────────┐    ┌──────────┐  │
+│  │ Your Input│───▶│ Local Model  │───▶│ Response │  │
+│  │           │    │ (Ollama /    │    │          │  │
+│  │           │    │  LM Studio / │    │          │  │
+│  │           │    │  llama.cpp)  │    │          │  │
+│  └───────────┘    └──────────────┘    └──────────┘  │
+│                                                     │
+│  ┌─────────────────────────────────────────────┐    │
+│  │ Local Storage (conversations, settings)     │    │
+│  └─────────────────────────────────────────────┘    │
+│                                                     │
+└─────────────────────────────────────────────────────┘
+           ╳ No data leaves this boundary
+`}</pre>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <h2>What we don't do</h2>
+          <ul class="check-list dont-list">
+            <li>No telemetry or usage tracking</li>
+            <li>No analytics (no Google Analytics, no Mixpanel, nothing)</li>
+            <li>No crash reports sent to any server</li>
+            <li>No data collection of any kind</li>
+            <li>No ads, no fingerprinting, no cookies</li>
+            <li>No background network requests during inference</li>
+          </ul>
+        </div>
+
+        <div class="reveal">
+          <h2>What we do</h2>
+          <ul class="check-list do-list">
+            <li>Run models entirely on your hardware</li>
+            <li>Store conversations locally in plain files you control</li>
+            <li>Keep configuration in user-readable formats</li>
+            <li>Ship 100% open-source code you can audit</li>
+            <li>Let you choose which models to download and use</li>
+          </ul>
+        </div>
+
+        <div class="reveal">
+          <h2>Network transparency</h2>
+          <p>High Vibes does use the network in two specific, user-initiated scenarios:</p>
+          <ol>
+            <li><strong>Model downloads</strong> — when you choose to download a new model through Ollama or another provider. This is a one-time download you initiate.</li>
+            <li><strong>Premium cloud fallback</strong> — Premium users can optionally send queries to cloud models (GPT-4, Claude, etc.) as a fallback. This is always opt-in, clearly indicated in the UI, and never happens without your explicit action.</li>
+          </ol>
+          <p>Outside of these two cases, High Vibes makes zero network requests. You can verify this with any network monitor.</p>
+        </div>
+
+        <div class="reveal">
+          <h2>Open-source audit</h2>
+          <p>Don't take our word for it — read the code. High Vibes is fully open source and we actively encourage security audits.</p>
+          <div class="audit-cta">
+            <a href="https://github.com/high-vibes-io" class="btn btn-primary" target="_blank" rel="noopener">View on GitHub</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .privacy-hero {
+    text-align: center;
+    padding-block: var(--s24) var(--s12);
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(155, 114, 207, 0.08) 0%, transparent 70%);
+  }
+
+  .subtitle {
+    font-size: clamp(1.05rem, 1.5vw + 0.5rem, 1.25rem);
+    color: var(--text-muted);
+    max-width: 36rem;
+    margin: var(--s6) auto 0;
+    line-height: 1.7;
+  }
+
+  .content {
+    max-width: 48rem;
+    margin-inline: auto;
+  }
+
+  .content h2 {
+    margin-top: var(--s12);
+    margin-bottom: var(--s4);
+  }
+
+  .content p {
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: var(--s4);
+  }
+
+  .content ol {
+    padding-left: var(--s6);
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: var(--s4);
+  }
+
+  .content ol li {
+    margin-bottom: var(--s3);
+  }
+
+  .diagram {
+    background: var(--bg-dark);
+    color: var(--text-on-dark);
+    border-radius: var(--radius-lg);
+    padding: var(--s6);
+    overflow-x: auto;
+    margin: var(--s6) 0;
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+
+  .diagram pre {
+    margin: 0;
+  }
+
+  .check-list {
+    list-style: none;
+    padding: 0;
+    margin: var(--s4) 0;
+  }
+
+  .check-list li {
+    padding: var(--s3) 0;
+    padding-left: var(--s8);
+    position: relative;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .check-list li::before {
+    position: absolute;
+    left: 0;
+    font-size: 1.1rem;
+  }
+
+  .dont-list li::before {
+    content: '✕';
+    color: var(--coral);
+  }
+
+  .do-list li::before {
+    content: '✓';
+    color: #4caf50;
+  }
+
+  .audit-cta {
+    margin-top: var(--s6);
+    margin-bottom: var(--s8);
+  }
+
+  @media (max-width: 640px) {
+    .diagram {
+      font-size: 0.7rem;
+    }
+  }
+</style>

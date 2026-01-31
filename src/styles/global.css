@@ -131,9 +131,29 @@ section {
   color: var(--text-on-dark);
 }
 
-/* ── Scroll-driven animations ── */
+/* ── Scroll-driven animations (JS fallback) ── */
+.reveal,
+.stagger > * {
+  opacity: 0;
+  transform: translateY(2rem);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.stagger > *:nth-child(2) { transition-delay: 80ms; }
+.stagger > *:nth-child(3) { transition-delay: 160ms; }
+.stagger > *:nth-child(4) { transition-delay: 240ms; }
+
+.reveal.is-visible,
+.stagger.is-visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Progressive enhancement: CSS scroll-driven animations for Chrome 115+ */
 @supports (animation-timeline: view()) {
-  .reveal {
+  .reveal,
+  .stagger > * {
+    transition: none;
     opacity: 0;
     transform: translateY(2rem);
     animation: reveal-up linear both;
@@ -148,24 +168,9 @@ section {
     }
   }
 
-  .stagger > * {
-    opacity: 0;
-    transform: translateY(1.5rem);
-    animation: reveal-up linear both;
-    animation-timeline: view();
-    animation-range: entry 0% entry 40%;
-  }
   .stagger > *:nth-child(2) { animation-delay: 80ms; }
   .stagger > *:nth-child(3) { animation-delay: 160ms; }
   .stagger > *:nth-child(4) { animation-delay: 240ms; }
-}
-
-/* fallback: just show everything */
-@supports not (animation-timeline: view()) {
-  .reveal, .stagger > * {
-    opacity: 1;
-    transform: none;
-  }
 }
 
 /* ── Utility ── */

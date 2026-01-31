@@ -3,7 +3,12 @@
 
 <section class="hero">
   <div class="container">
-    <p class="badge mono">Open Source AI Assistant</p>
+    <div class="pill-row">
+      <a href="#privacy" class="pill mono">Local-First</a>
+      <a href="#features" class="pill mono">Multi-Model</a>
+      <a href="#features" class="pill mono">Voice</a>
+      <a href="https://github.com/high-vibes-io" class="pill mono" target="_blank" rel="noopener">Open Source ↗</a>
+    </div>
     <h1>Local-first AI <span class="text-gradient">that just works.</span></h1>
     <p class="subtitle">Private. Powerful. Yours. Run AI models on your machine with multi-model support, voice interaction, and deep integrations — no cloud required.</p>
     <div class="cta-group">
@@ -25,15 +30,45 @@
       radial-gradient(ellipse 60% 50% at 80% 20%, rgba(155, 114, 207, 0.06) 0%, transparent 60%);
   }
 
-  .badge {
+  .pill-row {
+    display: flex;
+    gap: var(--s3);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: var(--s6);
+  }
+
+  .pill {
     display: inline-block;
     font-size: 0.8rem;
     padding: var(--s1) var(--s4);
     border: 1px solid var(--border);
     border-radius: 999px;
     color: var(--text-muted);
-    margin-bottom: var(--s6);
     letter-spacing: 0.03em;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    animation: pill-fade-in 0.5s ease both;
+  }
+
+  .pill:nth-child(2) { animation-delay: 0.1s; }
+  .pill:nth-child(3) { animation-delay: 0.2s; }
+  .pill:nth-child(4) { animation-delay: 0.3s; }
+
+  .pill:hover {
+    transform: scale(1.06);
+    border-color: var(--coral);
+    box-shadow: 0 0 12px rgba(255, 107, 74, 0.15);
+  }
+
+  @keyframes pill-fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(0.5rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .subtitle {
@@ -55,6 +90,10 @@
     .hero {
       min-height: auto;
       padding-block: var(--s16) var(--s12);
+    }
+
+    .pill-row {
+      gap: var(--s2);
     }
 
     .cta-group {
