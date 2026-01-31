@@ -1,4 +1,5 @@
 ---
+const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <section>
@@ -11,28 +12,39 @@
       <details class="faq-item">
         <summary>Is my data really private?</summary>
         <div class="faq-body">
-          <p>When using local models, yes. High Vibes supports local-first inference:</p>
+          <p>It depends on which agents you use:</p>
           <ul>
-            <li><strong>Local model execution</strong> — models run on your hardware via Ollama, vLLM, or LM Studio.</li>
-            <li><strong>No telemetry during inference</strong> — your prompts and responses stay on your machine when using local agents.</li>
-            <li><strong>Local storage</strong> — conversations and settings are stored on your device.</li>
+            <li><strong>Local agents</strong> (Ollama, vLLM, LM Studio) — your code and prompts stay entirely on your machine. Nothing is sent over the network.</li>
+            <li><strong>Cloud agents</strong> (Claude Code, Gemini CLI, Codex, OpenCode) — your prompts are sent to the respective cloud provider (Anthropic, Google, OpenAI, etc.) for processing. These agents require network access by design.</li>
+            <li><strong>Remote / Teams mode</strong> — session data is routed through our relay and stored on our servers so your team can access shared sessions and metrics.</li>
           </ul>
-          <p>Premium features like cloud model fallback and remote access do use the network, but only when you explicitly opt in.</p>
-          <p><a href={`${import.meta.env.BASE_URL}privacy/`} class="faq-link">Read our full privacy architecture →</a></p>
+          <p>You always choose which agent to use and whether to enable remote or teams mode.</p>
+          <p><a href={`${baseUrl}privacy/`} class="faq-link">Read our full privacy architecture →</a></p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>What agents can I use?</summary>
+        <div class="faq-body">
+          <p>High Vibes wraps multiple coding agents through a single interface:</p>
+          <ul>
+            <li><strong>Local agents</strong> — any model supported by Ollama, vLLM, or LM Studio (Llama 3, Mistral, Phi-3, Gemma, and hundreds more).</li>
+            <li><strong>Cloud agents (Premium)</strong> — Claude Code, Gemini CLI, Codex, and OpenCode. These connect to their respective cloud providers.</li>
+          </ul>
         </div>
       </details>
 
       <details class="faq-item">
         <summary>What happens after the trial?</summary>
         <div class="faq-body">
-          <p>After your trial expires, you keep full access to local coding agents (Ollama, vLLM, LM Studio) on the free tier. The free tier is ad-supported with a brief interstitial on app open (at most once per hour). Premium features — voice input, remote access, cloud model fallback, and metrics — require a paid subscription.</p>
+          <p>After your trial expires, you keep full access to local coding agents on the free tier. The free tier is ad-supported with a brief interstitial on app open (at most once per hour). Premium features — cloud agents, voice input, remote access, and teams — require a paid subscription.</p>
         </div>
       </details>
 
       <details class="faq-item">
-        <summary>What models can I use?</summary>
+        <summary>What is Teams mode?</summary>
         <div class="faq-body">
-          <p>Any model supported by Ollama, vLLM, or LM Studio — including Llama 3, Mistral, Phi-3, Gemma, and hundreds more. Premium users can also access cloud models like GPT-4 and Claude as a fallback.</p>
+          <p>Teams is a Premium feature that lets your organisation collaborate through High Vibes. It includes shared agent sessions, team-wide metrics and usage insights, and centralised configuration. Session data in Teams mode is stored on our servers so all team members can access it.</p>
         </div>
       </details>
 
@@ -41,9 +53,9 @@
         <div class="faq-body">
           <p>High Vibes runs across three surfaces:</p>
           <ul>
-            <li><strong>Desktop service</strong> — a Python-based orchestration service that manages your local coding agents.</li>
+            <li><strong>Desktop service</strong> — a Python-based orchestration service that manages your coding agents.</li>
             <li><strong>Mobile app</strong> — a React Native app for voice-first interaction with your agents on the go.</li>
-            <li><strong>Web dashboard</strong> — view your session history and metrics (no live sessions).</li>
+            <li><strong>Web dashboard</strong> — view your session history and metrics (no live sessions). Teams mode adds shared dashboards.</li>
           </ul>
         </div>
       </details>
@@ -51,14 +63,14 @@
       <details class="faq-item">
         <summary>What hardware do I need?</summary>
         <div class="faq-body">
-          <p>A modern Mac (M1+), Linux, or Windows machine with at least 8GB RAM. Smaller models like Phi-3 run well on modest hardware; larger models benefit from 16GB+ and a discrete GPU.</p>
+          <p>For local agents: a modern Mac (M1+), Linux, or Windows machine with at least 8GB RAM. Smaller models like Phi-3 run well on modest hardware; larger models benefit from 16GB+ and a discrete GPU. Cloud agents have no special hardware requirements beyond a network connection.</p>
         </div>
       </details>
 
       <details class="faq-item">
-        <summary>How is this different from ChatGPT/Claude?</summary>
+        <summary>How is this different from using Claude Code / Gemini CLI directly?</summary>
         <div class="faq-body">
-          <p>Those are cloud-only services. High Vibes is a local-first interface for coding agents — your code stays on your machine during local inference. It also gives you a mobile app, voice input (Premium), and the flexibility to choose between local and cloud models.</p>
+          <p>High Vibes wraps those agents and adds a unified mobile-first interface, voice input, remote access to your desktop from your phone, and the ability to switch between local and cloud agents seamlessly. Teams mode adds shared sessions and metrics across your organisation.</p>
         </div>
       </details>
     </div>

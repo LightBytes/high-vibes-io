@@ -3,19 +3,19 @@ import Layout from '../layouts/Layout.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="Privacy Architecture — High Vibes" description="How High Vibes keeps your code private with local-first inference, transparent network usage, and user-controlled data.">
+<Layout title="Privacy Architecture — High Vibes" description="How High Vibes handles your data across local agents, cloud agents, remote access, and teams mode.">
   <main>
     <section class="privacy-hero">
       <div class="container">
         <h1>Privacy <span class="text-gradient">Architecture</span></h1>
-        <p class="subtitle">High Vibes is built local-first. When you use local agents, your code and prompts never leave your machine.</p>
+        <p class="subtitle">High Vibes supports both local and cloud coding agents. Here's exactly what happens to your data in each mode.</p>
       </div>
     </section>
 
     <section>
       <div class="container content">
         <div class="reveal">
-          <h2>How local inference works</h2>
+          <h2>Local agents — everything stays on your machine</h2>
           <p>When using local coding agents (Ollama, vLLM, LM Studio), every interaction stays on your device.</p>
 
           <div class="diagram mono">
@@ -38,33 +38,60 @@ import Footer from '../components/Footer.astro';
            ╳ No data leaves this boundary
 `}</pre>
           </div>
-        </div>
 
-        <div class="reveal">
-          <h2>What stays local</h2>
           <ul class="check-list do-list">
-            <li>Model inference when using local agents (Ollama, vLLM, LM Studio)</li>
-            <li>Your code, prompts, and agent responses during local sessions</li>
-            <li>Conversation history stored on your device</li>
+            <li>Model inference runs entirely on your hardware</li>
+            <li>Your code, prompts, and responses never leave your machine</li>
+            <li>Conversation history stored locally on your device</li>
             <li>Configuration and settings in user-readable formats</li>
           </ul>
         </div>
 
         <div class="reveal">
-          <h2>When the network is used</h2>
-          <p>High Vibes does use the network in specific scenarios — always transparently:</p>
+          <h2>Cloud agents — data goes to the provider</h2>
+          <p>When using cloud-based coding agents (Claude Code, Gemini CLI, Codex, OpenCode), your prompts and code context are sent to the respective cloud provider for processing.</p>
+
+          <div class="diagram mono">
+            <pre>{`
+┌──────────────────┐         ┌──────────────────────┐
+│   Your Machine   │         │   Cloud Provider     │
+│                  │         │   (Anthropic /        │
+│  ┌────────────┐  │  HTTPS  │    Google / OpenAI)   │
+│  │ Your Input │──┼────────▶│  ┌────────────────┐  │
+│  └────────────┘  │         │  │ Cloud Inference│  │
+│                  │◀────────┼──│                │  │
+│  ┌────────────┐  │         │  └────────────────┘  │
+│  │  Response  │  │         │                      │
+│  └────────────┘  │         └──────────────────────┘
+└──────────────────┘
+`}</pre>
+          </div>
+
+          <p>Each cloud provider has its own privacy policy and data handling practices. High Vibes does not store or intercept cloud agent traffic — it connects you directly to the provider's API.</p>
+        </div>
+
+        <div class="reveal">
+          <h2>Remote access & Teams — what we store</h2>
+          <p>Premium features that route through our infrastructure:</p>
+          <ul class="check-list info-list">
+            <li><strong>Remote access</strong> — session data passes through our relay so you can reach your desktop service from your phone or another device. Requires account sign-in.</li>
+            <li><strong>Teams mode</strong> — session history, team metrics, and shared configuration are stored on our servers so all team members can access them.</li>
+            <li><strong>Web dashboard</strong> — session history and metrics are synced for signed-in users.</li>
+          </ul>
+          <p>These features are always opt-in. If you only use local agents without remote or teams mode, nothing leaves your machine.</p>
+        </div>
+
+        <div class="reveal">
+          <h2>Other network usage</h2>
           <ol>
-            <li><strong>Model downloads</strong> — when you choose to download a new model through Ollama or another provider.</li>
-            <li><strong>Cloud model fallback (Premium)</strong> — Premium users can opt in to send queries to cloud models (GPT-4, Claude, etc.). This is clearly indicated in the UI and never happens without your explicit action.</li>
-            <li><strong>Remote access (Premium)</strong> — Premium users can connect to their desktop service remotely via our relay. This requires account sign-in.</li>
+            <li><strong>Model downloads</strong> — when you choose to download a new local model through Ollama or another provider.</li>
             <li><strong>Ads (Free tier)</strong> — the free tier displays a brief interstitial ad on app open (at most once per hour).</li>
-            <li><strong>Web dashboard</strong> — the web dashboard syncs session history and metrics for signed-in users.</li>
           </ol>
         </div>
 
         <div class="reveal">
           <h2>Your control</h2>
-          <p>You decide what leaves your machine. Local-only usage requires no account and no network access beyond initial model downloads. Premium network features are always opt-in and clearly labeled in the UI.</p>
+          <p>You always choose which agent to use and whether to enable remote access or teams mode. Local-only usage requires no account, no sign-in, and no network access beyond initial model downloads.</p>
         </div>
       </div>
     </section>
@@ -153,6 +180,11 @@ import Footer from '../components/Footer.astro';
   .do-list li::before {
     content: '✓';
     color: #4caf50;
+  }
+
+  .info-list li::before {
+    content: '→';
+    color: var(--purple);
   }
 
   @media (max-width: 640px) {
