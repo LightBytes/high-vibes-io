@@ -1,18 +1,22 @@
 ---
+const baseUrl = import.meta.env.BASE_URL;
+
 const features = [
   {
     id: 'privacy',
     icon: '🔒',
     title: 'Local-First Privacy',
     description: 'Run coding agents locally with Ollama, vLLM, or LM Studio. Your code and prompts stay on your machine during local inference.',
-    link: `${import.meta.env.BASE_URL}privacy/`,
+    link: `${baseUrl}privacy/`,
     linkText: 'Learn more →',
   },
   {
-    id: 'multi-model',
+    id: 'multi-agent',
     icon: '🧠',
-    title: 'Multi-Model Support',
-    description: 'Switch between Ollama, vLLM, LM Studio, and more. Use the right model for every coding task.',
+    title: 'Multi-Agent Support',
+    description: 'One interface for all your coding agents — Claude Code, Gemini CLI, Codex, OpenCode, plus local models via Ollama, vLLM, and LM Studio.',
+    link: '#pricing',
+    linkText: 'Learn more →',
   },
   {
     id: 'voice',
@@ -20,6 +24,8 @@ const features = [
     title: 'Voice Interaction',
     badge: 'Premium',
     description: 'Talk to your coding agents naturally with voice input. Describe what you want to build and let the agent handle the rest.',
+    link: '#pricing',
+    linkText: 'Learn more →',
   },
   {
     id: 'remote',
@@ -27,6 +33,25 @@ const features = [
     title: 'Remote Access',
     badge: 'Premium',
     description: 'Access your coding agents from anywhere. Sign in to connect remotely to your desktop service via our secure relay.',
+    link: '#pricing',
+    linkText: 'Learn more →',
+  },
+  {
+    id: 'teams',
+    icon: '👥',
+    title: 'Teams',
+    badge: 'Premium',
+    description: 'Collaborate with your team — shared agent sessions, team-wide metrics, and centralised configuration across your organisation.',
+    link: '#pricing',
+    linkText: 'Learn more →',
+  },
+  {
+    id: 'dashboard',
+    icon: '📊',
+    title: 'Web Dashboard',
+    description: 'Review your session history and metrics from any browser. Teams mode adds shared dashboards and usage insights across your organisation.',
+    link: '#pricing',
+    linkText: 'Learn more →',
   },
 ];
 ---
