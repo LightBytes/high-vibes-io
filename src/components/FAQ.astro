@@ -11,36 +11,40 @@
       <details class="faq-item">
         <summary>Is my data really private?</summary>
         <div class="faq-body">
-          <p>Yes. High Vibes is built from the ground up for local-first privacy:</p>
+          <p>When using local models, yes. High Vibes supports local-first inference:</p>
           <ul>
-            <li><strong>No network requests</strong> — your prompts and responses never leave your machine during inference.</li>
-            <li><strong>No telemetry</strong> — we collect zero usage data, crash reports, or analytics.</li>
-            <li><strong>Local model execution</strong> — models run on your hardware via Ollama, LM Studio, or llama.cpp.</li>
-            <li><strong>Local storage only</strong> — conversations and settings are stored in plain files on your disk.</li>
-            <li><strong>Open-source &amp; auditable</strong> — every line of code is public. You can verify these claims yourself.</li>
+            <li><strong>Local model execution</strong> — models run on your hardware via Ollama, vLLM, or LM Studio.</li>
+            <li><strong>No telemetry during inference</strong> — your prompts and responses stay on your machine when using local agents.</li>
+            <li><strong>Local storage</strong> — conversations and settings are stored on your device.</li>
           </ul>
-          <p><a href="/privacy/" class="faq-link">Read our full privacy architecture →</a></p>
+          <p>Premium features like cloud model fallback and remote access do use the network, but only when you explicitly opt in.</p>
+          <p><a href={`${import.meta.env.BASE_URL}privacy/`} class="faq-link">Read our full privacy architecture →</a></p>
         </div>
       </details>
 
       <details class="faq-item">
-        <summary>Can High Vibes access my files?</summary>
+        <summary>What happens after the trial?</summary>
         <div class="faq-body">
-          <p>Only when you explicitly grant access. High Vibes can integrate with your file system for context-aware assistance, but every file access requires your permission through the system's native file picker or a directory you configure. No background scanning or indexing occurs without your consent.</p>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>Is the code auditable?</summary>
-        <div class="faq-body">
-          <p>Fully. High Vibes is open source under a permissive license. You can inspect every line of code on <a href="https://github.com/high-vibes-io" target="_blank" rel="noopener">GitHub</a>, build from source, and verify that no data leaves your machine. We encourage security researchers and privacy advocates to audit the codebase.</p>
+          <p>After your trial expires, you keep full access to local coding agents (Ollama, vLLM, LM Studio) on the free tier. The free tier is ad-supported with a brief interstitial on app open (at most once per hour). Premium features — voice input, remote access, cloud model fallback, and metrics — require a paid subscription.</p>
         </div>
       </details>
 
       <details class="faq-item">
         <summary>What models can I use?</summary>
         <div class="faq-body">
-          <p>Any model supported by Ollama, LM Studio, or llama.cpp — including Llama 3, Mistral, Phi-3, Gemma, and hundreds more. Premium users can also access cloud models like GPT-4 and Claude as a fallback.</p>
+          <p>Any model supported by Ollama, vLLM, or LM Studio — including Llama 3, Mistral, Phi-3, Gemma, and hundreds more. Premium users can also access cloud models like GPT-4 and Claude as a fallback.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>What platforms are supported?</summary>
+        <div class="faq-body">
+          <p>High Vibes runs across three surfaces:</p>
+          <ul>
+            <li><strong>Desktop service</strong> — a Python-based orchestration service that manages your local coding agents.</li>
+            <li><strong>Mobile app</strong> — a React Native app for voice-first interaction with your agents on the go.</li>
+            <li><strong>Web dashboard</strong> — view your session history and metrics (no live sessions).</li>
+          </ul>
         </div>
       </details>
 
@@ -52,16 +56,9 @@
       </details>
 
       <details class="faq-item">
-        <summary>Is it really free?</summary>
-        <div class="faq-body">
-          <p>The core product is free and open source, forever. Premium adds optional cloud model access, advanced automations, and priority support for a monthly fee.</p>
-        </div>
-      </details>
-
-      <details class="faq-item">
         <summary>How is this different from ChatGPT/Claude?</summary>
         <div class="faq-body">
-          <p>Those are cloud services — your data goes to their servers. High Vibes runs locally on your machine, integrates with your existing tools, and gives you full control over which models you use.</p>
+          <p>Those are cloud-only services. High Vibes is a local-first interface for coding agents — your code stays on your machine during local inference. It also gives you a mobile app, voice input (Premium), and the flexibility to choose between local and cloud models.</p>
         </div>
       </details>
     </div>

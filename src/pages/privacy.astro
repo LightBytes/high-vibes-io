@@ -3,20 +3,20 @@ import Layout from '../layouts/Layout.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout title="Privacy Architecture — High Vibes" description="How High Vibes keeps your data private: local-first architecture, zero telemetry, and full transparency.">
+<Layout title="Privacy Architecture — High Vibes" description="How High Vibes keeps your code private with local-first inference, transparent network usage, and user-controlled data.">
   <main>
     <section class="privacy-hero">
       <div class="container">
         <h1>Privacy <span class="text-gradient">Architecture</span></h1>
-        <p class="subtitle">High Vibes is designed so your data never leaves your machine. Here's exactly how it works.</p>
+        <p class="subtitle">High Vibes is built local-first. When you use local agents, your code and prompts never leave your machine.</p>
       </div>
     </section>
 
     <section>
       <div class="container content">
         <div class="reveal">
-          <h2>How it works</h2>
-          <p>Every interaction stays on your device. There are no intermediary servers, no proxies, and no "anonymized" data collection.</p>
+          <h2>How local inference works</h2>
+          <p>When using local coding agents (Ollama, vLLM, LM Studio), every interaction stays on your device.</p>
 
           <div class="diagram mono">
             <pre>{`
@@ -24,10 +24,10 @@ import Footer from '../components/Footer.astro';
 │                  Your Machine                       │
 │                                                     │
 │  ┌───────────┐    ┌──────────────┐    ┌──────────┐  │
-│  │ Your Input│───▶│ Local Model  │───▶│ Response │  │
+│  │ Your Input│───▶│ Local Agent  │───▶│ Response │  │
 │  │           │    │ (Ollama /    │    │          │  │
-│  │           │    │  LM Studio / │    │          │  │
-│  │           │    │  llama.cpp)  │    │          │  │
+│  │           │    │  vLLM /      │    │          │  │
+│  │           │    │  LM Studio)  │    │          │  │
 │  └───────────┘    └──────────────┘    └──────────┘  │
 │                                                     │
 │  ┌─────────────────────────────────────────────┐    │
@@ -41,44 +41,30 @@ import Footer from '../components/Footer.astro';
         </div>
 
         <div class="reveal">
-          <h2>What we don't do</h2>
-          <ul class="check-list dont-list">
-            <li>No telemetry or usage tracking</li>
-            <li>No analytics (no Google Analytics, no Mixpanel, nothing)</li>
-            <li>No crash reports sent to any server</li>
-            <li>No data collection of any kind</li>
-            <li>No ads, no fingerprinting, no cookies</li>
-            <li>No background network requests during inference</li>
-          </ul>
-        </div>
-
-        <div class="reveal">
-          <h2>What we do</h2>
+          <h2>What stays local</h2>
           <ul class="check-list do-list">
-            <li>Run models entirely on your hardware</li>
-            <li>Store conversations locally in plain files you control</li>
-            <li>Keep configuration in user-readable formats</li>
-            <li>Ship 100% open-source code you can audit</li>
-            <li>Let you choose which models to download and use</li>
+            <li>Model inference when using local agents (Ollama, vLLM, LM Studio)</li>
+            <li>Your code, prompts, and agent responses during local sessions</li>
+            <li>Conversation history stored on your device</li>
+            <li>Configuration and settings in user-readable formats</li>
           </ul>
         </div>
 
         <div class="reveal">
-          <h2>Network transparency</h2>
-          <p>High Vibes does use the network in two specific, user-initiated scenarios:</p>
+          <h2>When the network is used</h2>
+          <p>High Vibes does use the network in specific scenarios — always transparently:</p>
           <ol>
-            <li><strong>Model downloads</strong> — when you choose to download a new model through Ollama or another provider. This is a one-time download you initiate.</li>
-            <li><strong>Premium cloud fallback</strong> — Premium users can optionally send queries to cloud models (GPT-4, Claude, etc.) as a fallback. This is always opt-in, clearly indicated in the UI, and never happens without your explicit action.</li>
+            <li><strong>Model downloads</strong> — when you choose to download a new model through Ollama or another provider.</li>
+            <li><strong>Cloud model fallback (Premium)</strong> — Premium users can opt in to send queries to cloud models (GPT-4, Claude, etc.). This is clearly indicated in the UI and never happens without your explicit action.</li>
+            <li><strong>Remote access (Premium)</strong> — Premium users can connect to their desktop service remotely via our relay. This requires account sign-in.</li>
+            <li><strong>Ads (Free tier)</strong> — the free tier displays a brief interstitial ad on app open (at most once per hour).</li>
+            <li><strong>Web dashboard</strong> — the web dashboard syncs session history and metrics for signed-in users.</li>
           </ol>
-          <p>Outside of these two cases, High Vibes makes zero network requests. You can verify this with any network monitor.</p>
         </div>
 
         <div class="reveal">
-          <h2>Open-source audit</h2>
-          <p>Don't take our word for it — read the code. High Vibes is fully open source and we actively encourage security audits.</p>
-          <div class="audit-cta">
-            <a href="https://github.com/high-vibes-io" class="btn btn-primary" target="_blank" rel="noopener">View on GitHub</a>
-          </div>
+          <h2>Your control</h2>
+          <p>You decide what leaves your machine. Local-only usage requires no account and no network access beyond initial model downloads. Premium network features are always opt-in and clearly labeled in the UI.</p>
         </div>
       </div>
     </section>
@@ -164,19 +150,9 @@ import Footer from '../components/Footer.astro';
     font-size: 1.1rem;
   }
 
-  .dont-list li::before {
-    content: '✕';
-    color: var(--coral);
-  }
-
   .do-list li::before {
     content: '✓';
     color: #4caf50;
-  }
-
-  .audit-cta {
-    margin-top: var(--s6);
-    margin-bottom: var(--s8);
   }
 
   @media (max-width: 640px) {

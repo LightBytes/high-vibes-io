@@ -4,27 +4,29 @@ const features = [
     id: 'privacy',
     icon: '🔒',
     title: 'Local-First Privacy',
-    description: 'Your data never leaves your machine. Models run locally — no cloud, no telemetry, no compromises.',
-    link: '/privacy/',
+    description: 'Run coding agents locally with Ollama, vLLM, or LM Studio. Your code and prompts stay on your machine during local inference.',
+    link: `${import.meta.env.BASE_URL}privacy/`,
     linkText: 'Learn more →',
   },
   {
     id: 'multi-model',
     icon: '🧠',
     title: 'Multi-Model Support',
-    description: 'Switch between Ollama, LM Studio, llama.cpp, and more. Use the right model for every task.',
+    description: 'Switch between Ollama, vLLM, LM Studio, and more. Use the right model for every coding task.',
   },
   {
     id: 'voice',
     icon: '🎙️',
     title: 'Voice Interaction',
-    description: 'Talk to your AI naturally. Whisper-powered speech-to-text with real-time streaming responses.',
+    badge: 'Premium',
+    description: 'Talk to your coding agents naturally with voice input. Describe what you want to build and let the agent handle the rest.',
   },
   {
-    id: 'integrations',
-    icon: '🔌',
-    title: 'Deep Integrations',
-    description: 'Connect to your tools — terminal, editor, browser, calendar. AI that fits your workflow.',
+    id: 'remote',
+    icon: '🌐',
+    title: 'Remote Access',
+    badge: 'Premium',
+    description: 'Access your coding agents from anywhere. Sign in to connect remotely to your desktop service via our secure relay.',
   },
 ];
 ---
@@ -32,15 +34,18 @@ const features = [
 <section id="features">
   <div class="container">
     <div class="section-heading reveal">
-      <h2>Built for people who care about <span class="text-gradient">their data</span></h2>
-      <p>Everything you need from an AI assistant, without giving up control.</p>
+      <h2>Built for developers who care about <span class="text-gradient">their workflow</span></h2>
+      <p>A voice-enabled interface for coding agents — on mobile, desktop, and web.</p>
     </div>
 
     <div class="grid stagger">
       {features.map((f) => (
         <div class="card" id={f.id}>
           <span class="card-icon">{f.icon}</span>
-          <h3>{f.title}</h3>
+          <div class="card-header">
+            <h3>{f.title}</h3>
+            {f.badge && <span class="card-badge mono">{f.badge}</span>}
+          </div>
           <p>{f.description}</p>
           {f.link && <a href={f.link} class="card-link">{f.linkText}</a>}
         </div>
@@ -75,8 +80,24 @@ const features = [
     margin-bottom: var(--s4);
   }
 
-  .card h3 {
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: var(--s2);
     margin-bottom: var(--s2);
+  }
+
+  .card-badge {
+    font-size: 0.65rem;
+    padding: 0.1rem 0.5rem;
+    background: var(--grad-purple);
+    color: #fff;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  .card h3 {
+    margin-bottom: 0;
   }
 
   .card p {
@@ -91,7 +112,6 @@ const features = [
     font-size: 0.9rem;
     font-weight: 600;
     color: var(--coral);
-    transition: gap 0.2s;
   }
 
   .card-link:hover {
