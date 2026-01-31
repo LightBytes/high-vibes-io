@@ -3,6 +3,6 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://high-vibes-io.github.io',
-  base: '/',
+  site: 'https://lightbytes.github.io',
+  base: '/high-vibes-io/',
 });
