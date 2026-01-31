@@ -1,26 +1,4 @@
 ---
-const faqs = [
-  {
-    q: 'Is my data really private?',
-    a: 'Yes. High Vibes runs models entirely on your machine. No data is sent to any server. There is no telemetry, analytics, or phone-home behavior. Your conversations stay yours.',
-  },
-  {
-    q: 'What models can I use?',
-    a: 'Any model supported by Ollama, LM Studio, or llama.cpp — including Llama 3, Mistral, Phi-3, Gemma, and hundreds more. Premium users can also access cloud models like GPT-4 and Claude as a fallback.',
-  },
-  {
-    q: 'What hardware do I need?',
-    a: 'A modern Mac (M1+), Linux, or Windows machine with at least 8GB RAM. Smaller models like Phi-3 run well on modest hardware; larger models benefit from 16GB+ and a discrete GPU.',
-  },
-  {
-    q: 'Is it really free?',
-    a: 'The core product is free and open source, forever. Premium adds optional cloud model access, advanced automations, and priority support for a monthly fee.',
-  },
-  {
-    q: 'How is this different from ChatGPT/Claude?',
-    a: 'Those are cloud services — your data goes to their servers. High Vibes runs locally on your machine, integrates with your existing tools, and gives you full control over which models you use.',
-  },
-];
 ---
 
 <section>
@@ -30,12 +8,62 @@ const faqs = [
     </div>
 
     <div class="faq-list stagger">
-      {faqs.map((faq) => (
-        <details class="faq-item">
-          <summary>{faq.q}</summary>
-          <p>{faq.a}</p>
-        </details>
-      ))}
+      <details class="faq-item">
+        <summary>Is my data really private?</summary>
+        <div class="faq-body">
+          <p>Yes. High Vibes is built from the ground up for local-first privacy:</p>
+          <ul>
+            <li><strong>No network requests</strong> — your prompts and responses never leave your machine during inference.</li>
+            <li><strong>No telemetry</strong> — we collect zero usage data, crash reports, or analytics.</li>
+            <li><strong>Local model execution</strong> — models run on your hardware via Ollama, LM Studio, or llama.cpp.</li>
+            <li><strong>Local storage only</strong> — conversations and settings are stored in plain files on your disk.</li>
+            <li><strong>Open-source &amp; auditable</strong> — every line of code is public. You can verify these claims yourself.</li>
+          </ul>
+          <p><a href="/privacy/" class="faq-link">Read our full privacy architecture →</a></p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Can High Vibes access my files?</summary>
+        <div class="faq-body">
+          <p>Only when you explicitly grant access. High Vibes can integrate with your file system for context-aware assistance, but every file access requires your permission through the system's native file picker or a directory you configure. No background scanning or indexing occurs without your consent.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Is the code auditable?</summary>
+        <div class="faq-body">
+          <p>Fully. High Vibes is open source under a permissive license. You can inspect every line of code on <a href="https://github.com/high-vibes-io" target="_blank" rel="noopener">GitHub</a>, build from source, and verify that no data leaves your machine. We encourage security researchers and privacy advocates to audit the codebase.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>What models can I use?</summary>
+        <div class="faq-body">
+          <p>Any model supported by Ollama, LM Studio, or llama.cpp — including Llama 3, Mistral, Phi-3, Gemma, and hundreds more. Premium users can also access cloud models like GPT-4 and Claude as a fallback.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>What hardware do I need?</summary>
+        <div class="faq-body">
+          <p>A modern Mac (M1+), Linux, or Windows machine with at least 8GB RAM. Smaller models like Phi-3 run well on modest hardware; larger models benefit from 16GB+ and a discrete GPU.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Is it really free?</summary>
+        <div class="faq-body">
+          <p>The core product is free and open source, forever. Premium adds optional cloud model access, advanced automations, and priority support for a monthly fee.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>How is this different from ChatGPT/Claude?</summary>
+        <div class="faq-body">
+          <p>Those are cloud services — your data goes to their servers. High Vibes runs locally on your machine, integrates with your existing tools, and gives you full control over which models you use.</p>
+        </div>
+      </details>
     </div>
   </div>
 </section>
@@ -76,10 +104,29 @@ const faqs = [
     display: none;
   }
 
-  .faq-item p {
+  .faq-body {
     padding-bottom: var(--s6);
     color: var(--text-muted);
     line-height: 1.7;
     font-size: 0.95rem;
+  }
+
+  .faq-body ul {
+    margin: var(--s3) 0;
+    padding-left: var(--s6);
+    list-style: disc;
+  }
+
+  .faq-body li {
+    margin-bottom: var(--s2);
+  }
+
+  .faq-link {
+    color: var(--coral);
+    font-weight: 600;
+  }
+
+  .faq-link:hover {
+    text-decoration: underline;
   }
 </style>
