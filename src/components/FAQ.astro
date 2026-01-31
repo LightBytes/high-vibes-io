@@ -1,0 +1,85 @@
+---
+const faqs = [
+  {
+    q: 'Is my data really private?',
+    a: 'Yes. High Vibes runs models entirely on your machine. No data is sent to any server. There is no telemetry, analytics, or phone-home behavior. Your conversations stay yours.',
+  },
+  {
+    q: 'What models can I use?',
+    a: 'Any model supported by Ollama, LM Studio, or llama.cpp — including Llama 3, Mistral, Phi-3, Gemma, and hundreds more. Premium users can also access cloud models like GPT-4 and Claude as a fallback.',
+  },
+  {
+    q: 'What hardware do I need?',
+    a: 'A modern Mac (M1+), Linux, or Windows machine with at least 8GB RAM. Smaller models like Phi-3 run well on modest hardware; larger models benefit from 16GB+ and a discrete GPU.',
+  },
+  {
+    q: 'Is it really free?',
+    a: 'The core product is free and open source, forever. Premium adds optional cloud model access, advanced automations, and priority support for a monthly fee.',
+  },
+  {
+    q: 'How is this different from ChatGPT/Claude?',
+    a: 'Those are cloud services — your data goes to their servers. High Vibes runs locally on your machine, integrates with your existing tools, and gives you full control over which models you use.',
+  },
+];
+---
+
+<section>
+  <div class="container">
+    <div class="section-heading reveal">
+      <h2>Frequently asked questions</h2>
+    </div>
+
+    <div class="faq-list stagger">
+      {faqs.map((faq) => (
+        <details class="faq-item">
+          <summary>{faq.q}</summary>
+          <p>{faq.a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-list {
+    max-width: 40rem;
+    margin-inline: auto;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+  }
+
+  summary {
+    padding: var(--s6) 0;
+    font-weight: 600;
+    font-size: 1.05rem;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  summary::after {
+    content: '+';
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    transition: transform 0.2s;
+  }
+
+  details[open] summary::after {
+    content: '−';
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item p {
+    padding-bottom: var(--s6);
+    color: var(--text-muted);
+    line-height: 1.7;
+    font-size: 0.95rem;
+  }
+</style>

@@ -1,0 +1,80 @@
+---
+const features = [
+  {
+    icon: '🔒',
+    title: 'Local-First Privacy',
+    description: 'Your data never leaves your machine. Models run locally — no cloud, no telemetry, no compromises.',
+  },
+  {
+    icon: '🧠',
+    title: 'Multi-Model Support',
+    description: 'Switch between Ollama, LM Studio, llama.cpp, and more. Use the right model for every task.',
+  },
+  {
+    icon: '🎙️',
+    title: 'Voice Interaction',
+    description: 'Talk to your AI naturally. Whisper-powered speech-to-text with real-time streaming responses.',
+  },
+  {
+    icon: '🔌',
+    title: 'Deep Integrations',
+    description: 'Connect to your tools — terminal, editor, browser, calendar. AI that fits your workflow.',
+  },
+];
+---
+
+<section>
+  <div class="container">
+    <div class="section-heading reveal">
+      <h2>Built for people who care about <span class="text-gradient">their data</span></h2>
+      <p>Everything you need from an AI assistant, without giving up control.</p>
+    </div>
+
+    <div class="grid stagger">
+      {features.map((f) => (
+        <div class="card">
+          <span class="card-icon">{f.icon}</span>
+          <h3>{f.title}</h3>
+          <p>{f.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: var(--s6);
+  }
+
+  .card {
+    padding: var(--s8);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    background: #fff;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+  }
+
+  .card-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: var(--s4);
+  }
+
+  .card h3 {
+    margin-bottom: var(--s2);
+  }
+
+  .card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+</style>

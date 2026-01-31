@@ -1,0 +1,212 @@
+/* ── Fonts ── */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=DM+Mono:wght@400;500&display=swap');
+
+/* ── Custom Properties ── */
+:root {
+  /* palette */
+  --bg: #FFF8F0;
+  --bg-dark: #1A1216;
+  --coral: #FF6B4A;
+  --amber: #FFAA33;
+  --purple: #9B72CF;
+  --text: #2D2226;
+  --text-muted: #6B5E62;
+  --text-on-dark: #F5EDE6;
+  --text-muted-on-dark: #A8959B;
+  --border: #E8DDD4;
+
+  /* gradients */
+  --grad-coral: linear-gradient(135deg, var(--coral), var(--amber));
+  --grad-purple: linear-gradient(135deg, var(--purple), var(--coral));
+
+  /* spacing (4px base) */
+  --s1: 0.25rem;
+  --s2: 0.5rem;
+  --s3: 0.75rem;
+  --s4: 1rem;
+  --s6: 1.5rem;
+  --s8: 2rem;
+  --s12: 3rem;
+  --s16: 4rem;
+  --s24: 6rem;
+
+  /* sizing */
+  --max-w: 72rem;
+  --radius: 0.75rem;
+  --radius-lg: 1.25rem;
+}
+
+/* ── Reset ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ── Typography ── */
+h1, h2, h3, h4 {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+h1 { font-size: clamp(2.25rem, 5vw + 1rem, 4rem); }
+h2 { font-size: clamp(1.75rem, 3vw + 0.5rem, 2.75rem); }
+h3 { font-size: clamp(1.25rem, 2vw + 0.25rem, 1.5rem); }
+
+code, .mono {
+  font-family: 'DM Mono', ui-monospace, monospace;
+}
+
+/* ── Layout ── */
+.container {
+  width: 100%;
+  max-width: var(--max-w);
+  margin-inline: auto;
+  padding-inline: var(--s6);
+}
+
+section {
+  padding-block: var(--s16);
+}
+
+/* ── Buttons ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s2);
+  padding: var(--s3) var(--s6);
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+.btn-primary {
+  background: var(--grad-coral);
+  color: #fff;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text);
+  border: 2px solid var(--border);
+}
+
+/* ── Dark section ── */
+.dark-section {
+  background: var(--bg-dark);
+  color: var(--text-on-dark);
+}
+
+/* ── Scroll-driven animations ── */
+@supports (animation-timeline: view()) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(2rem);
+    animation: reveal-up linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 35%;
+  }
+
+  @keyframes reveal-up {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .stagger > * {
+    opacity: 0;
+    transform: translateY(1.5rem);
+    animation: reveal-up linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 40%;
+  }
+  .stagger > *:nth-child(2) { animation-delay: 80ms; }
+  .stagger > *:nth-child(3) { animation-delay: 160ms; }
+  .stagger > *:nth-child(4) { animation-delay: 240ms; }
+}
+
+/* fallback: just show everything */
+@supports not (animation-timeline: view()) {
+  .reveal, .stagger > * {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── Utility ── */
+.text-gradient {
+  background: var(--grad-coral);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: var(--s12);
+}
+
+.section-heading p {
+  color: var(--text-muted);
+  font-size: 1.125rem;
+  margin-top: var(--s3);
+  max-width: 36rem;
+  margin-inline: auto;
+}
+
+/* ── Mobile responsive ── */
+@media (max-width: 640px) {
+  :root {
+    --s16: 2.5rem;
+    --s24: 3.5rem;
+    --s12: 2rem;
+  }
+
+  .container {
+    padding-inline: var(--s4);
+  }
+
+  .btn {
+    padding: var(--s3) var(--s4);
+    font-size: 0.95rem;
+  }
+
+  .section-heading p {
+    font-size: 1rem;
+  }
+}
