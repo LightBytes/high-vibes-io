@@ -3,13 +3,13 @@ const tiers = [
   {
     name: 'Free',
     price: '$0',
-    description: 'Everything you need to get started',
+    description: 'Local coding agents after trial',
     features: [
-      'Unlimited local model usage',
-      'Voice interaction',
-      'Terminal & editor integration',
+      'Local model usage (Ollama, vLLM, LM Studio)',
+      'Desktop service',
+      'Mobile app (ad-supported)',
+      'Web dashboard (history & metrics)',
       'Community support',
-      'All core features',
     ],
     cta: 'Get Started',
     href: '#quickstart',
@@ -18,12 +18,14 @@ const tiers = [
   {
     name: 'Premium',
     price: '$12/mo',
-    description: 'For power users who want more',
+    description: 'Full power, everywhere',
     features: [
-      'Everything in Free',
+      'Everything in Free, ad-free',
+      'Voice input',
+      'Remote access via relay',
       'Cloud model fallback (GPT-4, Claude)',
-      'Priority model updates',
       'Advanced workflow automations',
+      'Metrics & analytics',
       'Priority support',
     ],
     cta: 'Coming Soon',
@@ -33,11 +35,11 @@ const tiers = [
 ];
 ---
 
-<section class="dark-section">
+<section id="pricing" class="dark-section">
   <div class="container">
     <div class="section-heading reveal">
       <h2>Simple, honest pricing</h2>
-      <p>Start free. Upgrade when you need cloud superpowers.</p>
+      <p>Start with a free trial. Keep local agents free forever, or upgrade for voice, remote access, and cloud models.</p>
     </div>
 
     <div class="tier-grid stagger">
